@@ -13,7 +13,6 @@ public class DatePickerPartial {
 
     public DatePickerPartial() {
         UtilDateModel model = new UtilDateModel();
-        model.setDate(2000,1,1);
         model.setSelected(true);
         Properties properties = new Properties();
         properties.put("text.today", "Today");

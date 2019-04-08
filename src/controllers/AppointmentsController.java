@@ -5,6 +5,7 @@ import views.*;
 import database.AppointmentsLocalStorage;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,10 +73,11 @@ public class AppointmentsController {
             appointments.commitAll();
         } else {
             JFileChooser fileChooser = new JFileChooser();
-            int response = fileChooser.showOpenDialog(null);
+            fileChooser.setFileFilter(new FileNameExtensionFilter(".xml","xml"));
+            int response = fileChooser.showSaveDialog(null);
             if (response == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();;
-                open(file);
+                save(file);
             }
         }
     }

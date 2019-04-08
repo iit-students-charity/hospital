@@ -39,23 +39,21 @@ public class MenuPartial {
         return e -> {
             int response = fileChooser.showOpenDialog(null);
             if (response == JFileChooser.APPROVE_OPTION) {
-                File file = fileChooser.getSelectedFile();;
+                File file = fileChooser.getSelectedFile();
                 controller.open(file);
             }
         };
     }
 
     private ActionListener getSaveItemListener() {
-        return e -> {
-            controller.save();
-        };
+        return e -> controller.save();
     }
 
     private ActionListener getSaveAsItemListener(JFileChooser fileChooser) {
         return e -> {
             int response = fileChooser.showSaveDialog(null);
             if (response == JFileChooser.APPROVE_OPTION) {
-                File file = fileChooser.getSelectedFile();;
+                File file = fileChooser.getSelectedFile();
                 controller.save(file);
             }
         };
