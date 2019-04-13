@@ -10,13 +10,14 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TablePartial {
     private JPanel panel = new JPanel(new BorderLayout());
     private DefaultTableModel tableModel = getModel();
     private JLabel currentPageLabel;
     private JTextField updatePerPageField;
-    private ArrayList<Appointment> appointments;
+    private List<Appointment> appointments;
     private int page = 1;
     private int perPage = 30;
 
@@ -24,7 +25,7 @@ public class TablePartial {
         this(new ArrayList<Appointment>());
     }
 
-    public TablePartial(ArrayList<Appointment> appointments) {
+    public TablePartial(List<Appointment> appointments) {
         this.appointments = appointments;
 
         JTable table = new JTable();
@@ -60,13 +61,13 @@ public class TablePartial {
         rerender();
     }
 
-    public void setData(ArrayList<Appointment> appointments) {
+    public void setData(List<Appointment> appointments) {
         this.appointments = appointments;
         rerender();
     }
 
     public void rerender() {
-        ArrayList<Appointment> appointments = dataToDisplay(page, perPage);
+        List<Appointment> appointments = dataToDisplay(page, perPage);
         tableModel.setRowCount(0);
         for (Appointment appointment : appointments) {
             Object[] row = new Object[] {
@@ -180,8 +181,8 @@ public class TablePartial {
         table.setPerPage(Integer.valueOf(newPerPage));
         table.setPage(1);
     }
-    
-    private ArrayList<Appointment> dataToDisplay(int page, int perPage) {
+
+    private List<Appointment> dataToDisplay(int page, int perPage) {
         int from = (page - 1) * perPage;
         int to = from + perPage;
         to = to > appointments.size() ? appointments.size() : to;

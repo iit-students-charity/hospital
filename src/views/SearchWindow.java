@@ -6,7 +6,7 @@ import models.Appointment;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 
 public class SearchWindow {
@@ -50,7 +50,7 @@ public class SearchWindow {
         searchWindow.dispose();
     }
 
-    public void updateTable(ArrayList<Appointment> appointments) {
+    public void updateTable(List<Appointment> appointments) {
         table.setData(appointments);
     }
 

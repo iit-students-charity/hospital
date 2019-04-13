@@ -8,7 +8,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 import org.xml.sax.SAXException;
 
 public class AppointmentsXMLReader {
@@ -28,7 +28,7 @@ public class AppointmentsXMLReader {
         handler = new AppointmentsHandler();
     }
 
-    public ArrayList<Appointment> readAll() {
+    public List<Appointment> readAll() {
         try {
             parser.parse(file, handler);
         } catch (SAXException | IOException e) {

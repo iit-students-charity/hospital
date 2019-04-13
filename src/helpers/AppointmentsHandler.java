@@ -6,15 +6,15 @@ import models.Doctor;
 import models.Patient;
 
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 public class AppointmentsHandler extends DefaultHandler {
-    private ArrayList<Appointment> appointments;
+    private List<Appointment> appointments;
     private Appointment appointment;
     private Patient patient;
     private Address address;
@@ -25,12 +25,12 @@ public class AppointmentsHandler extends DefaultHandler {
     private boolean isDoctor;
 
 
-    public ArrayList<Appointment> getAppointments() {
+    public List<Appointment> getAppointments() {
         return appointments;
     }
 
     @Override
-    public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
+    public void startElement(String namespaceURI, String localName, String qName, Attributes atts) {
         if (qName.equals("appointments")) {
             appointments = new ArrayList<Appointment>();
         }
@@ -53,7 +53,7 @@ public class AppointmentsHandler extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String namespaceURI, String localName, String qName) throws SAXException {
+    public void endElement(String namespaceURI, String localName, String qName) {
         if (qName.equals("appointment")) {
             appointments.add(appointment);
         }
@@ -73,7 +73,7 @@ public class AppointmentsHandler extends DefaultHandler {
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         if (currentElement.equals("name") && isPatient) {
             patient.setName(text(ch, start, length));
         }

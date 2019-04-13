@@ -7,7 +7,7 @@ import database.AppointmentsLocalStorage;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 
 public class AppointmentsController {
@@ -44,13 +44,13 @@ public class AppointmentsController {
     }
 
     public void select(HashMap<String, String> params) {
-        ArrayList<Appointment> searchResults = appointments.applyFilters(params);
+        List<Appointment> searchResults = appointments.applyFilters(params);
         searchWindow.updateTable(searchResults);
     }
 
     public void remove(HashMap<String, String> params) {
-        ArrayList<Appointment> searchResults = appointments.applyFilters(params);
-        ArrayList<Appointment> appointments = this.appointments.getRecords();
+        List<Appointment> searchResults = appointments.applyFilters(params);
+        List<Appointment> appointments = this.appointments.getRecords();
         appointments.removeAll(searchResults);
         this.appointments.setRecords(appointments);
         new Alert(getRemovedRecordsList(searchResults));
@@ -86,11 +86,11 @@ public class AppointmentsController {
         return appointments;
     }
 
-    private String getRemovedRecordsList(ArrayList<Appointment> removedRecords) {
+    private String getRemovedRecordsList(List<Appointment> removedRecords) {
         if (removedRecords.size() == 0) {
             return "No records removed.";
         }
-        String text = new String(removedRecords.size() + " appointments removed:\n");
+        String text = removedRecords.size() + " appointments removed:\n";
         for (int index = 0; index < removedRecords.size(); index++) {
             Appointment appointment = removedRecords.get(index);
             text += appointment.getPatientSurname() + " at the doctor " + appointment.getDoctorSurname() + " " +

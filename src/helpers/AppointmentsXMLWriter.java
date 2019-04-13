@@ -4,7 +4,7 @@ import views.Alert;
 import models.Appointment;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -40,7 +40,7 @@ public class AppointmentsXMLWriter {
         }
     }
 
-    public void writeAll(ArrayList<Appointment> appointments) {
+    public void writeAll(List<Appointment> appointments) {
         try {
             DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
