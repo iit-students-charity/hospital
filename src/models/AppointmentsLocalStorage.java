@@ -1,14 +1,11 @@
-package database;
+package models;
 
 import helpers.AppointmentsXMLReader;
 import helpers.AppointmentsXMLWriter;
-import models.Appointment;
-import models.AppointmentsDTO;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
 
 public class AppointmentsLocalStorage {
     private List<Appointment> records = new ArrayList<Appointment>();
@@ -24,9 +21,8 @@ public class AppointmentsLocalStorage {
         return sourceFile;
     }
 
-    public AppointmentsLocalStorage setSourceFile(File sourceFile) {
+    public void setSourceFile(File sourceFile) {
         this.sourceFile = sourceFile;
-        return this;
     }
 
     public void readAll() {

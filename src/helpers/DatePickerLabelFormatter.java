@@ -22,5 +22,4 @@ public class DatePickerLabelFormatter extends JFormattedTextField.AbstractFormat
         }
         return "";
     }
-
 }

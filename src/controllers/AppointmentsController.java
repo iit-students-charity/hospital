@@ -3,7 +3,7 @@ package controllers;
 import models.Appointment;
 import models.AppointmentsDTO;
 import views.*;
-import database.AppointmentsLocalStorage;
+import models.AppointmentsLocalStorage;
 
 import java.io.File;
 import java.util.List;
@@ -13,11 +13,11 @@ public class AppointmentsController {
     private IndexWindow indexWindow;
     private SearchWindow searchWindow;
 
-    public AppointmentsController(AppointmentsLocalStorage appointments) {
+    AppointmentsController(AppointmentsLocalStorage appointments) {
         this.appointments = appointments;
     }
 
-    public void index(IndexWindow indexWindow) {
+    void index(IndexWindow indexWindow) {
         this.indexWindow = indexWindow;
         indexWindow.show();
     }

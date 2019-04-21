@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class DeleteWindow {
+class DeleteWindow {
     private AppointmentsController controller;
     private JFrame deleteWindow;
 

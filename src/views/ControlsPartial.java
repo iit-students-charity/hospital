@@ -8,7 +8,7 @@ import java.io.File;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class ControlsPartial {
+class ControlsPartial {
     private AppointmentsController controller;
     private JPanel panel = new JPanel(new GridLayout(15, 1, 0, 10));
 

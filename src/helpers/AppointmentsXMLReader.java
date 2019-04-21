@@ -22,7 +22,6 @@ public class AppointmentsXMLReader {
         try {
             parser = factory.newSAXParser();
         } catch (ParserConfigurationException | SAXException e) {
-            new Alert("Cannot open file.\nEnsure it's in right format and you have read permissions.");
             e.printStackTrace();
         }
         handler = new AppointmentsHandler();

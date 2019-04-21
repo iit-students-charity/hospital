@@ -1,6 +1,6 @@
 package controllers;
 
-import database.AppointmentsLocalStorage;
+import models.AppointmentsLocalStorage;
 import views.IndexWindow;
 
 public class ApplicationController {

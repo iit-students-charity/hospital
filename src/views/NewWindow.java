@@ -4,10 +4,9 @@ import controllers.AppointmentsController;
 import models.AppointmentsDTO;
 
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 import javax.swing.*;
 
-public class NewWindow {
+class NewWindow {
     private AppointmentsController controller;
     private JFrame newWindow;
 

@@ -7,7 +7,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class MenuPartial {
+class MenuPartial {
     private JMenuBar menuBar;
     private AppointmentsController controller;
 

@@ -8,7 +8,7 @@ import org.jdatepicker.impl.UtilDateModel;
 
 import java.util.Properties;
 
-public class DatePickerPartial {
+class DatePickerPartial {
     private JDatePickerImpl datePicker;
 
     public DatePickerPartial() {
