@@ -1,7 +1,5 @@
 package views;
 
-import helpers.DatePickerLabelFormatter;
-
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;

@@ -1,8 +1,5 @@
 package models;
 
-import helpers.AppointmentsXMLReader;
-import helpers.AppointmentsXMLWriter;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;

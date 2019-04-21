@@ -1,6 +1,5 @@
-package helpers;
+package models;
 
-import models.Appointment;
 import views.Alert;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -11,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 import org.xml.sax.SAXException;
 
-public class AppointmentsXMLReader {
+class AppointmentsXMLReader {
     private AppointmentsHandler handler;
     private SAXParser parser;
     private File file;

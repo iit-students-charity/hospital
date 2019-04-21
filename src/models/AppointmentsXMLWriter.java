@@ -1,7 +1,6 @@
-package helpers;
+package models;
 
 import views.Alert;
-import models.Appointment;
 
 import java.io.*;
 import java.util.List;
@@ -20,7 +19,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class AppointmentsXMLWriter {
+class AppointmentsXMLWriter {
     private File file;
     private static final String DEFAULT_STRUCTURE = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
             "<appointments>\n</appointments>";

@@ -1,9 +1,4 @@
-package helpers;
-
-import models.Address;
-import models.Appointment;
-import models.Doctor;
-import models.Patient;
+package models;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
