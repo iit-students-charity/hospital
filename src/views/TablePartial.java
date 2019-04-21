@@ -16,6 +16,7 @@ public class TablePartial {
     private JPanel panel = new JPanel(new BorderLayout());
     private DefaultTableModel tableModel = getModel();
     private JLabel currentPageLabel;
+    private JLabel totalRecordsLabel;
     private JTextField updatePerPageField;
     private List<Appointment> appointments;
     private int page = 1;
@@ -45,6 +46,7 @@ public class TablePartial {
         firstPageButton.addActionListener(getFirstPageButtonListener(this));
         currentPageLabel = new JLabel();
         JLabel updatePerPageLabel = new JLabel("Per page:");
+        totalRecordsLabel = new JLabel("Total records: " + appointments.size());
         updatePerPageField = new JTextField(String.valueOf(perPage), 4);
         updatePerPageField.getDocument().addDocumentListener(getUpdatePerPageListener(this));
         JPanel pageControlPanel = new JPanel();
@@ -55,6 +57,8 @@ public class TablePartial {
         pageControlPanel.add(currentPageLabel);
         pageControlPanel.add(nextButton);
         pageControlPanel.add(lastPageButton);
+        pageControlPanel.add(totalRecordsLabel);
+
 
         panel.add(scrollPane, BorderLayout.CENTER);
         panel.add(pageControlPanel, BorderLayout.SOUTH);
@@ -81,6 +85,7 @@ public class TablePartial {
             tableModel.addRow(row);
         }
         currentPageLabel.setText(getPage() + "/" + pageCount());
+        totalRecordsLabel.setText("Total records: " + this.appointments.size());
     }
 
     public JPanel getPanel() {
