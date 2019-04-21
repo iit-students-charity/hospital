@@ -60,20 +60,6 @@ public class AppointmentsController {
         appointments.commitAll();
     }
 
-    public void save() {
-        if (appointments.isSourceSet()) {
-            appointments.commitAll();
-        } else {
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setFileFilter(new FileNameExtensionFilter(".xml","xml"));
-            int response = fileChooser.showSaveDialog(null);
-            if (response == JFileChooser.APPROVE_OPTION) {
-                File file = fileChooser.getSelectedFile();
-                save(file);
-            }
-        }
-    }
-
     public AppointmentsLocalStorage getAppointments() {
         return appointments;
     }
