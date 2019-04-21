@@ -1,6 +1,7 @@
 package views;
 
 import controllers.AppointmentsController;
+import models.AppointmentsDTO;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -49,17 +50,18 @@ public class DeleteWindow {
 
     private ActionListener getSubmitButtonListener(AppointmentFormPartial form) {
         return e -> {
-            HashMap<String, String> params = new HashMap<String, String>();
-            params.put("patientName", form.getPatientName());
-            params.put("patientSurname", form.getPatientSurname());
-            params.put("patientCity", form.getPatientCity());
-            params.put("patientStreet", form.getPatientStreet());
-            params.put("patientBuildingNumber", form.getPatientBuildingNumber());
-            params.put("patientBirthDate", form.getPatientBirthDate());
-            params.put("doctorName", form.getDoctorName());
-            params.put("doctorSurname", form.getDoctorSurname());
-            params.put("date", form.getDate());
-            params.put("diagnosis", form.getDiagnosis());
+            AppointmentsDTO params = new AppointmentsDTO(
+                    form.getPatientName(),
+                    form.getPatientSurname(),
+                    form.getPatientCity(),
+                    form.getPatientStreet(),
+                    form.getPatientBuildingNumber(),
+                    form.getPatientBirthDate(),
+                    form.getDoctorName(),
+                    form.getDoctorSurname(),
+                    form.getDate(),
+                    form.getDiagnosis()
+            );
             controller.remove(params);
         };
     }

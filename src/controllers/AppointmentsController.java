@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Appointment;
+import models.AppointmentsDTO;
 import views.*;
 import database.AppointmentsLocalStorage;
 
@@ -37,18 +38,18 @@ public class AppointmentsController {
         new DeleteWindow(this).show();
     }
 
-    public void create(HashMap<String, String> params) {
+    public void create(AppointmentsDTO params) {
         Appointment newRecord = new Appointment(params);
         appointments.addRecord(newRecord);
         indexWindow.updateTable();
     }
 
-    public void select(HashMap<String, String> params) {
+    public void select(AppointmentsDTO params) {
         List<Appointment> searchResults = appointments.applyFilters(params);
         searchWindow.updateTable(searchResults);
     }
 
-    public void remove(HashMap<String, String> params) {
+    public void remove(AppointmentsDTO params) {
         List<Appointment> searchResults = appointments.applyFilters(params);
         List<Appointment> appointments = this.appointments.getRecords();
         appointments.removeAll(searchResults);

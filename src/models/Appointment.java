@@ -24,25 +24,25 @@ public class Appointment
         this.diagnosis = diagnosis;
     }
 
-    public Appointment(HashMap<String, String> attributes) {
+    public Appointment(AppointmentsDTO attributes) {
         this.date = null;
         Date patientBirthDate = null;
         try {
-            if (!attributes.get("date").isEmpty()) {
-                this.date = DATE_FORMAT.parse(attributes.get("date"));
+            if (!attributes.getDate().isEmpty()) {
+                this.date = DATE_FORMAT.parse(attributes.getDate());
             }
-            if (!attributes.get("patientBirthDate").isEmpty()) {
-                patientBirthDate = DATE_FORMAT.parse(attributes.get("patientBirthDate"));
+            if (!attributes.getPatientBirthDate().isEmpty()) {
+                patientBirthDate = DATE_FORMAT.parse(attributes.getPatientBirthDate());
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        Address address = new Address(attributes.get("patientCity"), attributes.get("patientStreet"), attributes.get("patientBuildingNumber"));
+        Address address = new Address(attributes.getPatientCity(), attributes.getPatientStreet(), attributes.getPatientBuildingNumber());
 
-        this.patient = new Patient(attributes.get("patientName"), attributes.get("patientSurname"), patientBirthDate, address);
-        this.doctor = new Doctor(attributes.get("doctorName"), attributes.get("doctorSurname"));
-        this.diagnosis = attributes.get("diagnosis");
+        this.patient = new Patient(attributes.getPatientName(), attributes.getPatientSurname(), patientBirthDate, address);
+        this.doctor = new Doctor(attributes.getDoctorName(), attributes.getDoctorSurname());
+        this.diagnosis = attributes.getDiagnosis();
     }
 
     public String getPatientFullName() {

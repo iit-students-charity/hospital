@@ -3,6 +3,7 @@ package database;
 import helpers.AppointmentsXMLReader;
 import helpers.AppointmentsXMLWriter;
 import models.Appointment;
+import models.AppointmentsDTO;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -51,18 +52,18 @@ public class AppointmentsLocalStorage {
         records.add(appointment);
     }
 
-    public List<Appointment> applyFilters(HashMap<String, String> params) {
+    public List<Appointment> applyFilters(AppointmentsDTO params) {
         List<Appointment> results;
-        results = applyPatientNameFilter(params.get("patientName"));
-        results = applyPatientSurnameFilter(results, params.get("patientSurname"));
-        results = applyPatientCityFilter(results, params.get("patientCity"));
-        results = applyPatientStreetFilter(results, params.get("patientStreet"));
-        results = applyPatientBuildingNumberFilter(results, params.get("patientBuildingNumber"));
-        results = applyPatientBirthDateFilter(results, params.get("patientBirthDate"));
-        results = applyDoctorNameFilter(results, params.get("doctorName"));
-        results = applyDoctorSurnameFilter(results, params.get("doctorSurname"));
-        results = applyDateFilter(results, params.get("date"));
-        results = applyDiagnosisFilter(results, params.get("diagnosis"));
+        results = applyPatientNameFilter(params.getPatientName());
+        results = applyPatientSurnameFilter(results, params.getPatientSurname());
+        results = applyPatientCityFilter(results, params.getPatientCity());
+        results = applyPatientStreetFilter(results, params.getPatientStreet());
+        results = applyPatientBuildingNumberFilter(results, params.getPatientBuildingNumber());
+        results = applyPatientBirthDateFilter(results, params.getPatientBirthDate());
+        results = applyDoctorNameFilter(results, params.getDoctorName());
+        results = applyDoctorSurnameFilter(results, params.getDoctorSurname());
+        results = applyDateFilter(results, params.getDate());
+        results = applyDiagnosisFilter(results, params.getDiagnosis());
         return results;
     }
 
