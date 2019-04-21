@@ -23,7 +23,7 @@ public class MenuPartial {
         JMenuItem saveItem = new JMenuItem("Save");
         JMenuItem saveAsItem = new JMenuItem("Save as");
         openItem.addActionListener(getOpenItemListener(fileChooser));
-        saveItem.addActionListener(getSaveItemListener());
+        saveItem.addActionListener(getSaveItemListener(fileChooser));
         saveAsItem.addActionListener(getSaveAsItemListener(fileChooser));
         menu.add(openItem);
         menu.add(saveItem);
@@ -45,12 +45,10 @@ public class MenuPartial {
         };
     }
 
-    private ActionListener getSaveItemListener() {
+    private ActionListener getSaveItemListener(JFileChooser fileChooser) {
         return e -> {
             File file = controller.getAppointments().getSourceFile();
             if (!controller.getAppointments().isSourceSet()) {
-                JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setFileFilter(new FileNameExtensionFilter(".xml", "xml"));
                 int response = fileChooser.showSaveDialog(null);
                 if (response == JFileChooser.APPROVE_OPTION) {
                     file = fileChooser.getSelectedFile();

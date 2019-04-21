@@ -5,8 +5,6 @@ import models.AppointmentsDTO;
 import views.*;
 import database.AppointmentsLocalStorage;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.util.List;
 
