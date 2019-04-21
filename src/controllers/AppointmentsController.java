@@ -9,59 +9,50 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.util.List;
-import java.util.HashMap;
 
 public class AppointmentsController {
     private AppointmentsLocalStorage appointments;
     private IndexWindow indexWindow;
     private SearchWindow searchWindow;
 
-    public AppointmentsController() {
-        appointments = new AppointmentsLocalStorage();
+    public AppointmentsController(AppointmentsLocalStorage appointments) {
+        this.appointments = appointments;
     }
 
-    public void index() {
-        indexWindow = new IndexWindow(this);
+    public void index(IndexWindow indexWindow) {
+        this.indexWindow = indexWindow;
         indexWindow.show();
     }
 
-    public void newRecord() {
-        new NewWindow(this).show();
-    }
-
-    public void search() {
-        searchWindow = new SearchWindow(this);
+    public void search(SearchWindow searchWindow) {
+        this.searchWindow = searchWindow;
         searchWindow.show();
-    }
-
-    public void delete() {
-        new DeleteWindow(this).show();
     }
 
     public void create(AppointmentsDTO params) {
         Appointment newRecord = new Appointment(params);
         appointments.addRecord(newRecord);
-        indexWindow.updateTable();
+        updateWindows();
     }
 
     public void select(AppointmentsDTO params) {
         List<Appointment> searchResults = appointments.applyFilters(params);
-        searchWindow.updateTable(searchResults);
+        searchWindow.update(searchResults);
     }
 
-    public void remove(AppointmentsDTO params) {
+    public List<Appointment> remove(AppointmentsDTO params) {
         List<Appointment> searchResults = appointments.applyFilters(params);
         List<Appointment> appointments = this.appointments.getRecords();
         appointments.removeAll(searchResults);
         this.appointments.setRecords(appointments);
-        new Alert(getRemovedRecordsList(searchResults));
-        indexWindow.updateTable();
+        updateWindows();
+        return searchResults;
     }
 
     public void open(File file) {
         appointments.setSourceFile(file);
         appointments.readAll();
-        indexWindow.updateTable();
+        updateWindows();
     }
 
     public void save(File file) {
@@ -77,7 +68,7 @@ public class AppointmentsController {
             fileChooser.setFileFilter(new FileNameExtensionFilter(".xml","xml"));
             int response = fileChooser.showSaveDialog(null);
             if (response == JFileChooser.APPROVE_OPTION) {
-                File file = fileChooser.getSelectedFile();;
+                File file = fileChooser.getSelectedFile();
                 save(file);
             }
         }
@@ -87,19 +78,12 @@ public class AppointmentsController {
         return appointments;
     }
 
-    private String getRemovedRecordsList(List<Appointment> removedRecords) {
-        if (removedRecords.size() == 0) {
-            return "No records removed.";
+    private void updateWindows() {
+        if (indexWindow != null) {
+            indexWindow.update();
         }
-        String text = removedRecords.size() + " appointments removed:\n";
-        for (int index = 0; index < removedRecords.size(); index++) {
-            Appointment appointment = removedRecords.get(index);
-            text += appointment.getPatientSurname() + " at the doctor " + appointment.getDoctorSurname() + " " +
-                    appointment.getDateString() + "\n";
-            if (index >= 9) {
-                return text + "And " + (removedRecords.size() - index - 1) + " more.";
-            }
+        if (searchWindow != null) {
+            searchWindow.update(appointments.getRecords());
         }
-        return text;
     }
 }

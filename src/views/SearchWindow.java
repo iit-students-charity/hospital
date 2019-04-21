@@ -51,7 +51,7 @@ public class SearchWindow {
         searchWindow.dispose();
     }
 
-    public void updateTable(List<Appointment> appointments) {
+    public void update(List<Appointment> appointments) {
         table.setData(appointments);
     }
 

@@ -1,11 +1,12 @@
 package views;
 
 import controllers.AppointmentsController;
+import models.Appointment;
 import models.AppointmentsDTO;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
+import java.util.List;
 
 public class DeleteWindow {
     private AppointmentsController controller;
@@ -62,7 +63,24 @@ public class DeleteWindow {
                     form.getDate(),
                     form.getDiagnosis()
             );
-            controller.remove(params);
+            List<Appointment> removedRecords = controller.remove(params);
+            new Alert(getRemovedRecordsText(removedRecords));
         };
+    }
+
+    private String getRemovedRecordsText(List<Appointment> removedRecords) {
+        if (removedRecords.size() == 0) {
+            return "No records removed.";
+        }
+        String text = removedRecords.size() + " appointments removed:\n";
+        for (int index = 0; index < removedRecords.size(); index++) {
+            Appointment appointment = removedRecords.get(index);
+            text += appointment.getPatientSurname() + " at the doctor " + appointment.getDoctorSurname() + " " +
+                    appointment.getDateString() + "\n";
+            if (index >= 9) {
+                return text + "And " + (removedRecords.size() - index - 1) + " more.";
+            }
+        }
+        return text;
     }
 }

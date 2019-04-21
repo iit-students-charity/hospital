@@ -46,7 +46,18 @@ public class MenuPartial {
     }
 
     private ActionListener getSaveItemListener() {
-        return e -> controller.save();
+        return e -> {
+            File file = controller.getAppointments().getSourceFile();
+            if (!controller.getAppointments().isSourceSet()) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileFilter(new FileNameExtensionFilter(".xml", "xml"));
+                int response = fileChooser.showSaveDialog(null);
+                if (response == JFileChooser.APPROVE_OPTION) {
+                    file = fileChooser.getSelectedFile();
+                }
+            }
+            controller.save(file);
+        };
     }
 
     private ActionListener getSaveAsItemListener(JFileChooser fileChooser) {

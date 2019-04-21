@@ -37,7 +37,7 @@ public class IndexWindow {
         mainWindow.dispose();
     }
 
-    public void updateTable() {
+    public void update() {
         table.setData(controller.getAppointments().getRecords());
     }
 }
