@@ -9,7 +9,7 @@ import java.util.Properties;
 class DatePickerPartial {
     private JDatePickerImpl datePicker;
 
-    public DatePickerPartial() {
+    DatePickerPartial() {
         UtilDateModel model = new UtilDateModel();
         model.setSelected(true);
         Properties properties = new Properties();
@@ -20,7 +20,7 @@ class DatePickerPartial {
         datePicker = new JDatePickerImpl(datePanel, new DatePickerLabelFormatter());
     }
 
-    public JDatePickerImpl getDatePicker() {
+    JDatePickerImpl getDatePicker() {
         return datePicker;
     }
 }

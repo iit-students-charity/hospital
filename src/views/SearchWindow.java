@@ -14,7 +14,7 @@ public class SearchWindow {
     private JFrame searchWindow;
     private TablePartial table;
 
-    public SearchWindow(AppointmentsController controller) {
+    SearchWindow(AppointmentsController controller) {
         this.controller = controller;
         searchWindow = new JFrame("Search");
         searchWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -42,11 +42,11 @@ public class SearchWindow {
         searchWindow.pack();
     }
 
-    public void show() {
+    void show() {
         searchWindow.setVisible(true);
     }
 
-    public void dispose() {
+    void dispose() {
         searchWindow.dispose();
     }
 

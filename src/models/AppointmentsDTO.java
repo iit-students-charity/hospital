@@ -28,43 +28,43 @@ public class AppointmentsDTO {
         this.diagnosis = diagnosis;
     }
 
-    public String getPatientName() {
+    String getPatientName() {
         return patientName;
     }
 
-    public String getPatientSurname() {
+    String getPatientSurname() {
         return patientSurname;
     }
 
-    public String getPatientCity() {
+    String getPatientCity() {
         return patientCity;
     }
 
-    public String getPatientStreet() {
+    String getPatientStreet() {
         return patientStreet;
     }
 
-    public String getPatientBuildingNumber() {
+    String getPatientBuildingNumber() {
         return patientBuildingNumber;
     }
 
-    public String getPatientBirthDate() {
+    String getPatientBirthDate() {
         return patientBirthDate;
     }
 
-    public String getDoctorName() {
+    String getDoctorName() {
         return doctorName;
     }
 
-    public String getDoctorSurname() {
+    String getDoctorSurname() {
         return doctorSurname;
     }
 
-    public String getDate() {
+    String getDate() {
         return date;
     }
 
-    public String getDiagnosis() {
+    String getDiagnosis() {
         return diagnosis;
     }
 

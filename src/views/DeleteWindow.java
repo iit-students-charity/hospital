@@ -13,7 +13,7 @@ class DeleteWindow {
     private IndexWindow indexWindow;
     private JFrame deleteWindow;
 
-    public DeleteWindow(AppointmentsController controller, IndexWindow parent) {
+    DeleteWindow(AppointmentsController controller, IndexWindow parent) {
         this.controller = controller;
         this.indexWindow = parent;
         deleteWindow = new JFrame("Delete");
@@ -39,11 +39,11 @@ class DeleteWindow {
         deleteWindow.pack();
     }
 
-    public void show() {
+    void show() {
         deleteWindow.setVisible(true);
     }
 
-    public void dispose() {
+    void dispose() {
         deleteWindow.dispose();
     }
 
@@ -65,8 +65,8 @@ class DeleteWindow {
                     form.getDate(),
                     form.getDiagnosis()
             );
-            List<Appointment> removedRecords = controller.remove(params, indexWindow);
-
+            List<Appointment> removedRecords = controller.remove(params);
+            indexWindow.update();
             new Alert(getRemovedRecordsText(removedRecords));
         };
     }

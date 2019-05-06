@@ -22,11 +22,11 @@ public class TablePartial {
     private int page = 1;
     private int perPage = 30;
 
-    public TablePartial() {
+    TablePartial() {
         this(new ArrayList<Appointment>());
     }
 
-    public TablePartial(List<Appointment> appointments) {
+    TablePartial(List<Appointment> appointments) {
         this.appointments = appointments;
 
         JTable table = new JTable();
@@ -65,12 +65,12 @@ public class TablePartial {
         rerender();
     }
 
-    public void setData(List<Appointment> appointments) {
+    void setData(List<Appointment> appointments) {
         this.appointments = appointments;
         rerender();
     }
 
-    public void rerender() {
+    void rerender() {
         List<Appointment> appointments = dataToDisplay(page, perPage);
         tableModel.setRowCount(0);
         for (Appointment appointment : appointments) {
@@ -88,7 +88,7 @@ public class TablePartial {
         totalRecordsLabel.setText("Total records: " + this.appointments.size());
     }
 
-    public JPanel getPanel() {
+    JPanel getPanel() {
         return panel;
     }
 

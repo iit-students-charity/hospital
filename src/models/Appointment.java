@@ -3,7 +3,6 @@ package models;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 
 public class Appointment
 {
@@ -13,11 +12,11 @@ public class Appointment
     private Date date;
     private String diagnosis;
 
-    public Appointment() {
+    Appointment() {
         this(new Patient(), new Doctor(), new Date(), "");
     }
 
-    public Appointment(Patient patient, Doctor doctor, Date date, String diagnosis) {
+    private Appointment(Patient patient, Doctor doctor, Date date, String diagnosis) {
         this.patient = patient;
         this.doctor = doctor;
         this.date = date;
@@ -111,19 +110,19 @@ public class Appointment
         return diagnosis;
     }
 
-    public void setPatient(Patient patient) {
+    void setPatient(Patient patient) {
         this.patient = patient;
     }
 
-    public void setDoctor(Doctor doctor) {
+    void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
 
-    public void setDate(Date date) {
+    void setDate(Date date) {
         this.date = date;
     }
 
-    public void setDiagnosis(String diagnosis) {
+    void setDiagnosis(String diagnosis) {
         this.diagnosis = diagnosis;
     }
 }

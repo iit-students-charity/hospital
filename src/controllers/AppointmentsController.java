@@ -15,10 +15,9 @@ public class AppointmentsController {
         this.appointments = appointments;
     }
 
-    public void create(AppointmentsDTO params, IndexWindow window) {
+    public void create(AppointmentsDTO params) {
         Appointment newRecord = new Appointment(params);
         appointments.addRecord(newRecord);
-        window.update();
     }
 
     public void select(AppointmentsDTO params, SearchWindow window) {
@@ -26,19 +25,17 @@ public class AppointmentsController {
         window.update(searchResults);
     }
 
-    public List<Appointment> remove(AppointmentsDTO params, IndexWindow window) {
+    public List<Appointment> remove(AppointmentsDTO params) {
         List<Appointment> searchResults = appointments.applyFilters(params);
         List<Appointment> appointments = this.appointments.getRecords();
         appointments.removeAll(searchResults);
         this.appointments.setRecords(appointments);
-        window.update();
         return searchResults;
     }
 
-    public void open(File file, IndexWindow window) {
+    public void open(File file) {
         appointments.setSourceFile(file);
         appointments.readAll();
-        window.update();
     }
 
     public void save(File file) {

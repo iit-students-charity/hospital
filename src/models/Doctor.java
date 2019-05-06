@@ -1,35 +1,35 @@
 package models;
 
-public class Doctor {
+class Doctor {
     private String name;
     private String surname;
 
-    public Doctor(String name, String surname) {
+    Doctor(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
 
-    public Doctor() {
+    Doctor() {
         this("", "");
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public String getSurname() {
+    String getSurname() {
         return surname;
     }
 
-    public String getFullName() {
+    String getFullName() {
         return name + " " + surname;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
-    public void setSurname(String surname) {
+    void setSurname(String surname) {
         this.surname = surname;
     }
 }

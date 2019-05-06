@@ -12,7 +12,7 @@ class MenuPartial {
     private AppointmentsController controller;
     private IndexWindow indexWindow;
 
-    public MenuPartial(AppointmentsController controller, IndexWindow parent) {
+    MenuPartial(AppointmentsController controller, IndexWindow parent) {
         this.controller = controller;
         this.indexWindow = parent;
 
@@ -33,7 +33,7 @@ class MenuPartial {
         menuBar.add(menu);
     }
 
-    public JMenuBar getMenuBar() {
+    JMenuBar getMenuBar() {
         return menuBar;
     }
 
@@ -42,7 +42,8 @@ class MenuPartial {
             int response = fileChooser.showOpenDialog(null);
             if (response == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
-                controller.open(file, indexWindow);
+                controller.open(file);
+                indexWindow.update();
             }
         };
     }

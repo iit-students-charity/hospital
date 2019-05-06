@@ -6,12 +6,12 @@ import models.AppointmentsDTO;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class NewWindow {
+class NewWindow {
     private AppointmentsController controller;
     private JFrame newWindow;
     private IndexWindow indexWindow;
 
-    public NewWindow(AppointmentsController controller, IndexWindow parent) {
+    NewWindow(AppointmentsController controller, IndexWindow parent) {
         this.controller = controller;
         this.indexWindow = parent;
         newWindow = new JFrame("New appointment");
@@ -37,11 +37,11 @@ public class NewWindow {
         newWindow.pack();
     }
 
-    public void show() {
+    void show() {
         newWindow.setVisible(true);
     }
 
-    public void dispose() {
+    void dispose() {
         newWindow.dispose();
     }
 
@@ -63,7 +63,8 @@ public class NewWindow {
                     form.getDate(),
                     form.getDiagnosis()
             );
-            controller.create(params, indexWindow);
+            controller.create(params);
+            indexWindow.update();
         };
     }
 }

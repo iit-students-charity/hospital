@@ -11,7 +11,6 @@ import java.util.Date;
 
 class AppointmentFormPartial {
     private static final DateFormat FORMAT = new SimpleDateFormat("dd.MM.yyyy");
-    private AppointmentsController controller;
     private JPanel panel;
     private JTextField patientNameField;
     private JTextField patientSurnameField;
@@ -24,8 +23,7 @@ class AppointmentFormPartial {
     private JDatePickerImpl dateField;
     private JTextField diagnosisField;
 
-    public AppointmentFormPartial(AppointmentsController controller) {
-        this.controller = controller;
+    AppointmentFormPartial(AppointmentsController controller) {
         panel = new JPanel(new GridLayout(17, 2, 5, 5));
         panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
@@ -72,31 +70,31 @@ class AppointmentFormPartial {
         panel.add(diagnosisField);
     }
 
-    public JPanel getPanel() {
+    JPanel getPanel() {
         return panel;
     }
 
-    public String getPatientName() {
+    String getPatientName() {
         return patientNameField.getText();
     }
 
-    public String getPatientSurname() {
+    String getPatientSurname() {
         return patientSurnameField.getText();
     }
 
-    public String getPatientCity() {
+    String getPatientCity() {
         return patientCityField.getText();
     }
 
-    public String getPatientStreet() {
+    String getPatientStreet() {
         return patientStreetField.getText();
     }
 
-    public String getPatientBuildingNumber() {
+    String getPatientBuildingNumber() {
         return patientBuildingNumberField.getText();
     }
 
-    public String getPatientBirthDate() {
+    String getPatientBirthDate() {
         Date date = (Date) patientBirthDateField.getModel().getValue();
         if (date == null) {
             return "";
@@ -104,15 +102,15 @@ class AppointmentFormPartial {
         return FORMAT.format(date);
     }
 
-    public String getDoctorName() {
+    String getDoctorName() {
         return doctorNameField.getText();
     }
 
-    public String getDoctorSurname() {
+    String getDoctorSurname() {
         return doctorSurnameField.getText();
     }
 
-    public String getDate() {
+    String getDate() {
         Date date = (Date) dateField.getModel().getValue();
         if (date == null) {
             return "";
@@ -120,8 +118,7 @@ class AppointmentFormPartial {
         return FORMAT.format(date);
     }
 
-    public String getDiagnosis() {
+    String getDiagnosis() {
         return diagnosisField.getText();
     }
 }
-

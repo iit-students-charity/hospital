@@ -33,11 +33,11 @@ public class IndexWindow {
         mainWindow.setVisible(true);
     }
 
-    public void dispose() {
+    void dispose() {
         mainWindow.dispose();
     }
 
-    public void update() {
+    void update() {
         table.setData(controller.getAppointments().getRecords());
     }
 }

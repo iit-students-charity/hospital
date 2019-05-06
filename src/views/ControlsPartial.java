@@ -13,7 +13,7 @@ class ControlsPartial {
     private IndexWindow indexWindow;
     private JPanel panel = new JPanel(new GridLayout(15, 1, 0, 10));
 
-    public ControlsPartial(AppointmentsController controller, IndexWindow parent) {
+    ControlsPartial(AppointmentsController controller, IndexWindow parent) {
         this.controller = controller;
         this.indexWindow = parent;
         JButton addButton = new JButton("Add");
@@ -49,7 +49,8 @@ class ControlsPartial {
             int response = fileChooser.showOpenDialog(null);
             if (response == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
-                controller.open(file, indexWindow);
+                controller.open(file);
+                indexWindow.update();
             }
         };
     }
@@ -77,7 +78,7 @@ class ControlsPartial {
         };
     }
 
-    public JPanel getPanel() {
+    JPanel getPanel() {
         return panel;
     }
 

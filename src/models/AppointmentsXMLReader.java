@@ -15,7 +15,7 @@ class AppointmentsXMLReader {
     private SAXParser parser;
     private File file;
 
-    public AppointmentsXMLReader(File file) {
+    AppointmentsXMLReader(File file) {
         this.file = file;
         SAXParserFactory factory = SAXParserFactory.newInstance();
         try {
@@ -26,7 +26,7 @@ class AppointmentsXMLReader {
         handler = new AppointmentsHandler();
     }
 
-    public List<Appointment> readAll() {
+    List<Appointment> readAll() {
         try {
             parser.parse(file, handler);
         } catch (SAXException | IOException e) {
