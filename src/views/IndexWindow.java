@@ -22,9 +22,9 @@ public class IndexWindow {
 
         table = new TablePartial(controller.getAppointments().getRecords());
         contentPane.add(table.getPanel(), BorderLayout.CENTER);
-        contentPane.add(new ControlsPartial(controller).getPanel(), BorderLayout.WEST);
+        contentPane.add(new ControlsPartial(controller, this).getPanel(), BorderLayout.WEST);
 
-        mainWindow.setJMenuBar(new MenuPartial(controller).getMenuBar());
+        mainWindow.setJMenuBar(new MenuPartial(controller, this).getMenuBar());
         mainWindow.setContentPane(contentPane);
         mainWindow.pack();
     }

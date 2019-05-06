@@ -6,12 +6,14 @@ import models.AppointmentsDTO;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-class NewWindow {
+public class NewWindow {
     private AppointmentsController controller;
     private JFrame newWindow;
+    private IndexWindow indexWindow;
 
-    public NewWindow(AppointmentsController controller) {
+    public NewWindow(AppointmentsController controller, IndexWindow parent) {
         this.controller = controller;
+        this.indexWindow = parent;
         newWindow = new JFrame("New appointment");
         newWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newWindow.setLocationRelativeTo(null);
@@ -61,7 +63,7 @@ class NewWindow {
                     form.getDate(),
                     form.getDiagnosis()
             );
-            controller.create(params);
+            controller.create(params, indexWindow);
         };
     }
 }

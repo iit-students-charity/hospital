@@ -10,47 +10,35 @@ import java.util.List;
 
 public class AppointmentsController {
     private AppointmentsLocalStorage appointments;
-    private IndexWindow indexWindow;
-    private SearchWindow searchWindow;
 
     AppointmentsController(AppointmentsLocalStorage appointments) {
         this.appointments = appointments;
     }
 
-    void index(IndexWindow indexWindow) {
-        this.indexWindow = indexWindow;
-        indexWindow.show();
-    }
-
-    public void search(SearchWindow searchWindow) {
-        this.searchWindow = searchWindow;
-        searchWindow.show();
-    }
-
-    public void create(AppointmentsDTO params) {
+    public void create(AppointmentsDTO params, IndexWindow window) {
         Appointment newRecord = new Appointment(params);
         appointments.addRecord(newRecord);
-        updateWindows();
+        window.update();
     }
 
-    public void select(AppointmentsDTO params) {
+    public void select(AppointmentsDTO params, SearchWindow window) {
         List<Appointment> searchResults = appointments.applyFilters(params);
-        searchWindow.update(searchResults);
+        window.update(searchResults);
     }
 
-    public List<Appointment> remove(AppointmentsDTO params) {
+    public List<Appointment> remove(AppointmentsDTO params, IndexWindow window) {
         List<Appointment> searchResults = appointments.applyFilters(params);
         List<Appointment> appointments = this.appointments.getRecords();
         appointments.removeAll(searchResults);
         this.appointments.setRecords(appointments);
-        updateWindows();
+        window.update();
         return searchResults;
     }
 
-    public void open(File file) {
+    public void open(File file, IndexWindow window) {
         appointments.setSourceFile(file);
         appointments.readAll();
-        updateWindows();
+        window.update();
     }
 
     public void save(File file) {
@@ -60,14 +48,5 @@ public class AppointmentsController {
 
     public AppointmentsLocalStorage getAppointments() {
         return appointments;
-    }
-
-    private void updateWindows() {
-        if (indexWindow != null) {
-            indexWindow.update();
-        }
-        if (searchWindow != null) {
-            searchWindow.update(appointments.getRecords());
-        }
     }
 }

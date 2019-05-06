@@ -10,10 +10,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 class ControlsPartial {
     private AppointmentsController controller;
+    private IndexWindow indexWindow;
     private JPanel panel = new JPanel(new GridLayout(15, 1, 0, 10));
 
-    public ControlsPartial(AppointmentsController controller) {
+    public ControlsPartial(AppointmentsController controller, IndexWindow parent) {
         this.controller = controller;
+        this.indexWindow = parent;
         JButton addButton = new JButton("Add");
         JButton searchButton = new JButton("Search");
         JButton deleteButton = new JButton("Delete");
@@ -47,7 +49,7 @@ class ControlsPartial {
             int response = fileChooser.showOpenDialog(null);
             if (response == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
-                controller.open(file);
+                controller.open(file, indexWindow);
             }
         };
     }
@@ -80,14 +82,14 @@ class ControlsPartial {
     }
 
     private ActionListener getAddButtonListener() {
-        return e -> new NewWindow(controller).show();
+        return e -> new NewWindow(controller, indexWindow).show();
     }
 
     private ActionListener getSearchButtonListener() {
-        return e -> controller.search(new SearchWindow(controller));
+        return e -> new SearchWindow(controller).show();
     }
 
     private ActionListener getDeleteButtonListener() {
-        return e -> new DeleteWindow(controller).show();
+        return e -> new DeleteWindow(controller, indexWindow).show();
     }
 }

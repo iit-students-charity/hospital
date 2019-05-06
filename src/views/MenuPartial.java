@@ -10,9 +10,11 @@ import java.io.File;
 class MenuPartial {
     private JMenuBar menuBar;
     private AppointmentsController controller;
+    private IndexWindow indexWindow;
 
-    public MenuPartial(AppointmentsController controller) {
+    public MenuPartial(AppointmentsController controller, IndexWindow parent) {
         this.controller = controller;
+        this.indexWindow = parent;
 
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(new FileNameExtensionFilter(".xml","xml"));
@@ -40,7 +42,7 @@ class MenuPartial {
             int response = fileChooser.showOpenDialog(null);
             if (response == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
-                controller.open(file);
+                controller.open(file, indexWindow);
             }
         };
     }

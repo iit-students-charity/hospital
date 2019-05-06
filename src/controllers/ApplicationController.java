@@ -8,6 +8,6 @@ public class ApplicationController {
         AppointmentsLocalStorage appointments = new AppointmentsLocalStorage();
         AppointmentsController controller = new AppointmentsController(appointments);
         IndexWindow indexWindow = new IndexWindow(controller);
-        controller.index(indexWindow);
+        indexWindow.show();
     }
 }

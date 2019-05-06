@@ -10,10 +10,12 @@ import java.util.List;
 
 class DeleteWindow {
     private AppointmentsController controller;
+    private IndexWindow indexWindow;
     private JFrame deleteWindow;
 
-    public DeleteWindow(AppointmentsController controller) {
+    public DeleteWindow(AppointmentsController controller, IndexWindow parent) {
         this.controller = controller;
+        this.indexWindow = parent;
         deleteWindow = new JFrame("Delete");
         deleteWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         deleteWindow.setLocationRelativeTo(null);
@@ -63,7 +65,8 @@ class DeleteWindow {
                     form.getDate(),
                     form.getDiagnosis()
             );
-            List<Appointment> removedRecords = controller.remove(params);
+            List<Appointment> removedRecords = controller.remove(params, indexWindow);
+
             new Alert(getRemovedRecordsText(removedRecords));
         };
     }

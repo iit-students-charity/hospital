@@ -72,7 +72,7 @@ public class SearchWindow {
                     form.getDate(),
                     form.getDiagnosis()
             );
-            controller.select(params);
+            controller.select(params, this);
         };
     }
 }
