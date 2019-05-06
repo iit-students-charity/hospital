@@ -20,21 +20,54 @@ class MenuPartial {
         fileChooser.setFileFilter(new FileNameExtensionFilter(".xml","xml"));
 
         menuBar = new JMenuBar();
-        JMenu menu = new JMenu("File");
+        JMenu fileMenu = new JMenu("File");
+        JMenu editMenu = new JMenu("Edit");
+
         JMenuItem openItem = new JMenuItem("Open");
         JMenuItem saveItem = new JMenuItem("Save");
         JMenuItem saveAsItem = new JMenuItem("Save as");
+        JMenuItem addItem = new JMenuItem("Add");
+        JMenuItem searchItem = new JMenuItem("Search");
+        JMenuItem deleteItem = new JMenuItem("Delete");
+
         openItem.addActionListener(getOpenItemListener(fileChooser));
         saveItem.addActionListener(getSaveItemListener(fileChooser));
         saveAsItem.addActionListener(getSaveAsItemListener(fileChooser));
-        menu.add(openItem);
-        menu.add(saveItem);
-        menu.add(saveAsItem);
-        menuBar.add(menu);
+        addItem.addActionListener(getAddItemListener());
+        searchItem.addActionListener(getSearchItemListener());
+        deleteItem.addActionListener(getDeleteItemListener());
+
+        fileMenu.add(openItem);
+        fileMenu.add(saveItem);
+        fileMenu.add(saveAsItem);
+        editMenu.add(addItem);
+        editMenu.add(searchItem);
+        editMenu.add(deleteItem);
+
+        menuBar.add(fileMenu);
+        menuBar.add(editMenu);
     }
 
     JMenuBar getMenuBar() {
         return menuBar;
+    }
+
+    private ActionListener getAddItemListener() {
+        return e -> {
+            new NewWindow(controller, indexWindow).show();
+        };
+    }
+
+    private ActionListener getSearchItemListener() {
+        return e -> {
+            new SearchWindow(controller).show();
+        };
+    }
+
+    private ActionListener getDeleteItemListener() {
+        return e -> {
+            new DeleteWindow(controller, indexWindow).show();
+        };
     }
 
     private ActionListener getOpenItemListener(JFileChooser fileChooser) {

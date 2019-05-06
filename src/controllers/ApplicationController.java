@@ -7,7 +7,6 @@ public class ApplicationController {
     public static void main(String[] args) {
         AppointmentsLocalStorage appointments = new AppointmentsLocalStorage();
         AppointmentsController controller = new AppointmentsController(appointments);
-        IndexWindow indexWindow = new IndexWindow(controller);
-        indexWindow.show();
+        new IndexWindow(controller).show();
     }
 }
