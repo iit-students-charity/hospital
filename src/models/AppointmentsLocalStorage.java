@@ -46,157 +46,22 @@ public class AppointmentsLocalStorage {
     }
 
     public List<Appointment> applyFilters(AppointmentsDTO params) {
-        List<Appointment> results;
-        results = applyPatientNameFilter(params.getPatientName());
-        results = applyPatientSurnameFilter(results, params.getPatientSurname());
-        results = applyPatientCityFilter(results, params.getPatientCity());
-        results = applyPatientStreetFilter(results, params.getPatientStreet());
-        results = applyPatientBuildingNumberFilter(results, params.getPatientBuildingNumber());
-        results = applyPatientBirthDateFilter(results, params.getPatientBirthDate());
-        results = applyDoctorNameFilter(results, params.getDoctorName());
-        results = applyDoctorSurnameFilter(results, params.getDoctorSurname());
-        results = applyDateFilter(results, params.getDate());
-        results = applyDiagnosisFilter(results, params.getDiagnosis());
-        return results;
-    }
-
-    private List<Appointment> applyDiagnosisFilter(List<Appointment> data, String diagnosis) {
         List<Appointment> results = new ArrayList<Appointment>();
-        for(Appointment appointment : data) {
-            if (appointment.getDiagnosis().matches(".*" + diagnosis + ".*")) {
+        for(Appointment appointment : records) {
+            if (appointment.getDiagnosis().matches(".*" + params.getDiagnosis() + ".*") &&
+            appointment.getDateString().matches(".*" + params.getDate() + ".*") &&
+            appointment.getDoctorSurname().matches(".*" + params.getDoctorSurname() + ".*") &&
+            appointment.getDoctorName().matches(".*" + params.getDoctorName() + ".*") &&
+            appointment.getPatientBirthDateString().matches(".*" + params.getPatientBirthDate() + ".*") &&
+            appointment.getPatientBuildingNumber().matches(".*" + params.getPatientBuildingNumber() + ".*") &&
+            appointment.getPatientStreet().matches(".*" + params.getPatientStreet() + ".*") &&
+            appointment.getPatientCity().matches(".*" + params.getPatientCity() + ".*") &&
+            appointment.getPatientSurname().matches(".*" + params.getPatientSurname() + ".*") &&
+            appointment.getPatientName().matches(".*" + params.getPatientName() + ".*")) {
                 results.add(appointment);
             }
         }
+
         return results;
-    }
-
-    private List<Appointment> applyDiagnosisFilter(String diagnosis) {
-        return applyDiagnosisFilter(records, diagnosis);
-    }
-
-    private List<Appointment> applyDateFilter(List<Appointment> data, String date) {
-        List<Appointment> results = new ArrayList<Appointment>();
-        for(Appointment appointment : data) {
-            if (appointment.getDateString().matches(".*" + date + ".*")) {
-                results.add(appointment);
-            }
-        }
-        return results;
-    }
-
-    private List<Appointment> applyDateFilter(String date) {
-        return applyDateFilter(records, date);
-    }
-
-    private List<Appointment> applyDoctorSurnameFilter(List<Appointment> data, String doctorSurname) {
-        List<Appointment> results = new ArrayList<Appointment>();
-        for(Appointment appointment : data) {
-            if (appointment.getDoctorSurname().matches(".*" + doctorSurname + ".*")) {
-                results.add(appointment);
-            }
-        }
-        return results;
-    }
-
-    private List<Appointment> applyDoctorSurnameFilter(String doctorSurname) {
-        return applyDoctorSurnameFilter(records, doctorSurname);
-    }
-
-    private List<Appointment> applyDoctorNameFilter(List<Appointment> data, String doctorName) {
-        List<Appointment> results = new ArrayList<Appointment>();
-        for(Appointment appointment : data) {
-            if (appointment.getDoctorName().matches(".*" + doctorName + ".*")) {
-                results.add(appointment);
-            }
-        }
-        return results;
-    }
-
-    private List<Appointment> applyDoctorNameFilter(String doctorName) {
-        return applyDoctorNameFilter(records, doctorName);
-    }
-
-    private List<Appointment> applyPatientBirthDateFilter(List<Appointment> data, String patientBirthDate) {
-        List<Appointment> results = new ArrayList<Appointment>();
-        for(Appointment appointment : data) {
-            if (appointment.getPatientBirthDateString().matches(".*" + patientBirthDate + ".*")) {
-                results.add(appointment);
-            }
-        }
-        return results;
-    }
-
-    private List<Appointment> applyPatientBirthDateFilter(String patientBirthDate) {
-        return applyPatientBirthDateFilter(records, patientBirthDate);
-    }
-
-    private List<Appointment> applyPatientBuildingNumberFilter(List<Appointment> data, String patientBuildingNumber) {
-        List<Appointment> results = new ArrayList<Appointment>();
-        for(Appointment appointment : data) {
-            if (appointment.getPatientBuildingNumber().matches(".*" + patientBuildingNumber + ".*")) {
-                results.add(appointment);
-            }
-        }
-        return results;
-    }
-
-    private List<Appointment> applyPatientBuildingNumberFilter(String patientBuildingNumber) {
-        return applyPatientBuildingNumberFilter(records, patientBuildingNumber);
-    }
-
-    private List<Appointment> applyPatientStreetFilter(List<Appointment> data, String patientStreet) {
-        List<Appointment> results = new ArrayList<Appointment>();
-        for(Appointment appointment : data) {
-            if (appointment.getPatientStreet().matches(".*" + patientStreet + ".*")) {
-                results.add(appointment);
-            }
-        }
-        return results;
-    }
-
-    private List<Appointment> applyPatientStreetFilter(String patientStreet) {
-        return applyPatientStreetFilter(records, patientStreet);
-    }
-
-    private List<Appointment> applyPatientCityFilter(List<Appointment> data, String patientCity) {
-        List<Appointment> results = new ArrayList<Appointment>();
-        for(Appointment appointment : data) {
-            if (appointment.getPatientCity().matches(".*" + patientCity + ".*")) {
-                results.add(appointment);
-            }
-        }
-        return results;
-    }
-
-    private List<Appointment> applyPatientCityFilter(String patientCity) {
-        return applyPatientCityFilter(records, patientCity);
-    }
-
-    private List<Appointment> applyPatientSurnameFilter(List<Appointment> data, String patientSurname) {
-        List<Appointment> results = new ArrayList<Appointment>();
-        for(Appointment appointment : data) {
-            if (appointment.getPatientSurname().matches(".*" + patientSurname + ".*")) {
-                results.add(appointment);
-            }
-        }
-        return results;
-    }
-
-    private List<Appointment> applyPatientSurnameFilter(String patientSurname) {
-        return applyPatientSurnameFilter(records, patientSurname);
-    }
-
-    private List<Appointment> applyPatientNameFilter(List<Appointment> data, String patientName) {
-        List<Appointment> results = new ArrayList<Appointment>();
-        for(Appointment appointment : data) {
-            if (appointment.getPatientName().matches(".*" + patientName + ".*")) {
-                results.add(appointment);
-            }
-        }
-        return results;
-    }
-
-    private List<Appointment> applyPatientNameFilter(String patientName) {
-        return applyPatientNameFilter(records, patientName);
     }
 }
