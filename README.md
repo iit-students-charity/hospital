@@ -1,15 +1,9 @@
-# Hospital appointments management application on Swing
+# Вариант 5
 
-It's a simple desktop application.
-It designed by MVC pattern and use [**this**](https://sourceforge.net/projects/jdatepicker/ "JDatePicker") calendar lib. 
+| ФИО пациента    | Адрес прописки  |  Дата рождения  | Дата приема   | ФИО врача   | Заключение  |
+|---------------  |---------------- |---------------- |-------------  |-----------  |------------ |
 
-### Install
-
-```bash
-git clone https://github.com/ARtoriouSs/hospital.git
-cd hospital
-```
-
-* compile  
- ...  
-* run
+### Условия поиска и удаления:
+* фамилии пациента или адресу прописки;
+* по дате рождения;
+* по ФИО врача или дате последнего приема
