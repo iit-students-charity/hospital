@@ -1,7 +1,7 @@
 # Hospital appointments management application on Swing
 
-It's a desktop GUI app, created as a lab work in BSUIR.
-It designed by MVC pattern and use [**this**](https://sourceforge.net/projects/jdatepicker/ "JDatePicker") outer calendar lib. 
+It's a simple desktop application.
+It designed by MVC pattern and use [**this**](https://sourceforge.net/projects/jdatepicker/ "JDatePicker") calendar lib. 
 
 ### Install
 
